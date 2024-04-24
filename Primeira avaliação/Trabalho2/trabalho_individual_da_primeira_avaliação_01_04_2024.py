@@ -150,8 +150,7 @@ while True:
     elif forma_pagamento == "C":
         forma_pagamento = "CRÉDITO"
         if tipo_tarifa == "TBR":
-            valor_conta = valor_consumo30K + valor_consumo31_100K + \ # type: ignore
-                valor_consumo101_220K + valor_consumo_acima_220K # type: ignore
+            valor_conta = valor_consumo30K + valor_consumo31_100K +  valor_consumo101_220K + valor_consumo_acima_220K # type: ignore
             valor_conta = valor_conta + valor_conta*CREDITO
         elif tipo_tarifa == "TRNC":
             forma_pagamento = "CRÉDITO"

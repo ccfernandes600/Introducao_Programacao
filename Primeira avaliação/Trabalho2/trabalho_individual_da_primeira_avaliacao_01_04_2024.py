@@ -13,20 +13,20 @@ DEBITO = 0.02  # TAXA DE 2%
 CREDITO = 0.05  # TAXA DE 5%
 
 # Tarifa Residencial Baixa Renda
-TARIFA_30k = 0.23033  # Tarifa (R$/kWh)
-TARIFA31_100k = 0.39485  # Tarifa (R$/kWh)
-TARIFA101_220k = 0.59227  # Tarifa (R$/kWh)
-TARIFA_ACIMA_220k= 0.65808  # Tarifa (R$/kWh)
+TARIFA_30K = 0.23033  # Tarifa (R$/kWh)
+TARIFA_31_100K = 0.39485  # Tarifa (R$/kWh)
+TARIFA_101_200K = 0.59227  # Tarifa (R$/kWh)
+TARIFA_ACIMA_220K = 0.65808  # Tarifa (R$/kWh)
 
 # Tarifa Residencial Normal Convencional
 TARIFA_CONVENCIONAL = 0.71881  # Tarifa (R$/kWh)
 
 # Tarifa Residencial Normal Branca
-TARIFA_PONTA= 1.5968  # Tarifa (R$/kWh)
+TARIFA_PONTA = 1.5968  # Tarifa (R$/kWh)
 TARIFA_INTERMEDIARIO = 1.01266  # Tarifa (R$/kWh)
 TARIFA_FORA_PONTA = 0.57891  # Tarifa (R$/kWh)
 
-#Menu de entrada do nome do  Cliente clontrolada por Loop infinito
+# Menu de entrada do nome do  Cliente clontrolada por Loop infinito
 while True:
     print("\n\n\nCalcule o valor da sus conta Equatorial-MA\n\n\n")
     nome_cliente = input("Entre com o nome do consumidor:  ")
@@ -38,59 +38,60 @@ while True:
     
     [TRNB] - Tarifa Residencial Normal Branca\n\n""")
     while True:
-        tipo_tarifa = input(
+        TIPO_TARIFA = input(
             "Entre com um das opções \"TBR\",\"TRNC\" ou \"TRNB\" :")
-        tipo_tarifa = tipo_tarifa.upper()
-        if tipo_tarifa == "TBR" or tipo_tarifa == "TRNC" or tipo_tarifa == "TRNB":
+        TIPO_TARIFA = TIPO_TARIFA.upper()
+        if TIPO_TARIFA == "TBR" or TIPO_TARIFA == "TRNC" or TIPO_TARIFA == "TRNB":
             break
         else:
             print("Opção de tarifa inválida")
             continue
 
         # Entrada de dados
-    if tipo_tarifa == "TBR":
-        consumo_total = float(input("Entre com o valor de kWh consumido no mês: "))
-        consumo30K = 0
-        consumo31_100K = 0
-        consumo101_220K = 0
-        consumo_acima_220K = 0
+    if TIPO_TARIFA == "TBR":
+        consumo_total = float(
+            input("Entre com o valor de kWh consumido no mês: "))
+        CONSUMO_30K = 0
+        CONSUMO_31_100K = 0
+        CONSUMO_101_220K = 0
+        CONSUMO_ACIMA_220K = 0
         if consumo_total <= 30:
-            consumo30K = consumo_total
+            CONSUMO_30K = consumo_total
         elif consumo_total > 30 and consumo_total <= 100:
-            consumo30K = 30
-            consumo31_100K = consumo_total - 30
+            CONSUMO_30K = 30
+            CONSUMO_31_100K = consumo_total - 30
         elif consumo_total > 100 and consumo_total <= 220:
-            consumo30K = 30
-            consumo31_100K = 70
-            consumo101_220K = consumo_total - 100
+            CONSUMO_30K = 30
+            CONSUMO_31_100K = 70
+            CONSUMO_101_220K = consumo_total - 100
         else:
-            consumo30K = 30
-            consumo31_100K = 70
-            consumo101_220K = 120
-            consumo_acima_220K = consumo_total - 220
-        
+            CONSUMO_30K = 30
+            CONSUMO_31_100K = 70
+            CONSUMO_101_220K = 120
+            CONSUMO_ACIMA_220K = consumo_total - 220
 
         # Calculo do consumo Baixa Renda C
-        valor_consumo30K = consumo30K * TARIFA_30k
-        valor_consumo31_100K = consumo31_100K * TARIFA31_100k
-        valor_consumo101_220K = consumo101_220K * TARIFA101_220k
-        valor_consumo_acima_220K = consumo_acima_220K * TARIFA_ACIMA_220k
-    elif tipo_tarifa == "TRNC":
+        VALOR_CONSUMO_30K = CONSUMO_30K * TARIFA_30K
+        VALOR_CONSUMO_31_100K = CONSUMO_31_100K * TARIFA_31_100K
+        VALOR_CONSUMO_101_220K = CONSUMO_101_220K * TARIFA_101_200K
+        VALOR_CONSUMO_ACIMA_220K = CONSUMO_ACIMA_220K * TARIFA_ACIMA_220K
+    elif TIPO_TARIFA == "TRNC":
         consumo_convencional = float(
             input("Entre com valor de kWh consumido no mês: "))
         valor_consumo = consumo_convencional * TARIFA_CONVENCIONAL
-    elif tipo_tarifa == "TRNB":
-        consumo_total = float(input("Entre com o valor de kWh consumido no mês: "))
-        consumo_ponta = consumo_total * 0.17 # 17% do consumo total
-        consumo_intermediário = consumo_total * 0.25 # 25% do consumo de ponta
-        consumo_fora_ponta = consumo_total * 0.58 # 58% do consumo total
+    elif TIPO_TARIFA == "TRNB":
+        consumo_total = float(
+            input("Entre com o valor de kWh consumido no mês: "))
+        consumo_ponta = consumo_total * 0.17  # 17% do consumo total
+        consumo_intermediario = consumo_total * 0.25  # 25% do consumo de ponta
+        consumo_fora_ponta = consumo_total * 0.58  # 58% do consumo total
         # Calculo consumo Normal
-        valor_consumo_ponta = consumo_ponta * TARIFA_PONTA
-        valor_consumo_intermediário = consumo_intermediário * TARIFA_INTERMEDIARIO
-        valor_consumo_fora_ponta = consumo_fora_ponta * TARIFA_FORA_PONTA
+        VALOR_CONSUMO_PONTA = consumo_ponta * TARIFA_PONTA
+        VALOR_CONSUMO_INTERMEDIARIO = consumo_intermediario * TARIFA_INTERMEDIARIO
+        VALOR_CONSUMO_FORA_PONTA = consumo_fora_ponta * TARIFA_FORA_PONTA
 
     # Escolha da for de pagamento
-    #Menu de entrada da forma de pagamento  clontrolada por Loop infinito
+    # Menu de entrada da forma de pagamento  clontrolada por Loop infinito
 
     print("Escolha a forma de Pagamento\n\n\n")
     print("""MENU:
@@ -100,90 +101,93 @@ while True:
     
     [C] - Pagamento com Cartão de Crédito com juros de 5%\n\n""")
     while True:
-        forma_pagamento = input("Entre com \"P\" , \"D\" ou \"C\" : ")
-        forma_pagamento = forma_pagamento.upper()
-        if forma_pagamento.upper() == "P" or forma_pagamento.upper() == "D" or forma_pagamento.upper() == "C":
+        FORMA_PAGAMENTO = input("Entre com \"P\" , \"D\" ou \"C\" : ")
+        FORMA_PAGAMENTO = FORMA_PAGAMENTO.upper()
+        if FORMA_PAGAMENTO == "P" or FORMA_PAGAMENTO == "D" or FORMA_PAGAMENTO == "C":
             break
         else:
             print("Opção de pagamento inválida")
             continue
 
     # Calculo da Conta de Energia consumida
-    if forma_pagamento == "P":
-        valor_consumo30K = 0
-        valor_consumo31_100K = 0
-        valor_consumo101_220K = 0
-        valor_consumo_acima_220K = 0
+    if FORMA_PAGAMENTO == "P":
+        VALOR_CONSUMO_30K_CONSUMO_30K = 0
+        VALOR_CONSUMO_31_100K = 0
+        VALOR_CONSUMO_101_220K = 0
+        VALOR_CONSUMO_ACIMA_220K = 0
 
-        forma_pagamento = "PIX"
-        if tipo_tarifa == "TBR":
-            valor_conta = valor_consumo30K + valor_consumo31_100K + valor_consumo101_220K + valor_consumo_acima_220K
-            valor_conta = valor_conta + valor_conta*PIX
-        elif tipo_tarifa == "TRNC":
-            forma_pagamento = "PIX"
-            valor_conta = valor_consumo + valor_consumo*PIX
-        elif tipo_tarifa == "TRNB":
-            forma_pagamento = "PIX"
-            valor_consumo_ponta = 0
-            valor_consumo_intermediário = 0
-            valor_consumo_fora_ponta = 0
-            valor_conta = valor_consumo_ponta + valor_consumo_intermediário + valor_consumo_fora_ponta
-            valor_conta = valor_conta + valor_conta*PIX
+        FORMA_PAGAMENTO = "PIX"
+        if TIPO_TARIFA == "TBR":
+            VALOR_CONTA = VALOR_CONSUMO_30K + VALOR_CONSUMO_31_100K + \
+                VALOR_CONSUMO_101_220K + VALOR_CONSUMO_ACIMA_220K
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*PIX
+        elif TIPO_TARIFA == "TRNC":
+            FORMA_PAGAMENTO = "PIX"
+            VALOR_CONTA = valor_consumo + valor_consumo*PIX
+        elif TIPO_TARIFA == "TRNB":
+            FORMA_PAGAMENTO = "PIX"
+            VALOR_CONSUMO_PONTA = 0
+            VALOR_CONSUMO_INTERMEDIARIO = 0
+            VALOR_CONSUMO_FORA_PONTA = 0
+            VALOR_CONTA = VALOR_CONSUMO_PONTA + \
+                VALOR_CONSUMO_INTERMEDIARIO + VALOR_CONSUMO_FORA_PONTA
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*PIX
 
-    elif forma_pagamento == "D":
-        forma_pagamento = "DÉBITO"
-        valor_consumo30K = 0
-        valor_consumo31_100K = 0
-        valor_consumo101_220K = 0
-        valor_consumo_acima_220K = 0
-        if tipo_tarifa == "TBR":
-            valor_conta = valor_consumo30K + valor_consumo31_100K + \
-                valor_consumo101_220K + valor_consumo_acima_220K
-            valor_conta = valor_conta + valor_conta*DEBITO
-        elif tipo_tarifa == "TRNC":
-            forma_pagamento = "DÉBITO"
-            valor_conta = valor_consumo + valor_consumo*DEBITO
-        elif tipo_tarifa == "TRNB":
-            forma_pagamento = "DÉBITO"
-            valor_consumo_fora_ponta = valor_consumo_intermediário
-            valor_conta = valor_consumo_ponta + \
-                valor_consumo_intermediário + valor_consumo_fora_ponta # type: ignore
-            valor_conta = valor_conta + valor_conta*DEBITO
-    elif forma_pagamento == "C":
-        forma_pagamento = "CRÉDITO"
-        if tipo_tarifa == "TBR":
-            valor_conta = valor_consumo30K + valor_consumo31_100K +  valor_consumo101_220K + valor_consumo_acima_220K # type: ignore
-            valor_conta = valor_conta + valor_conta*CREDITO
-        elif tipo_tarifa == "TRNC":
-            forma_pagamento = "CRÉDITO"
-            valor_conta = valor_consumo + valor_consumo*CREDITO
-        elif tipo_tarifa == "TRNB":
-            forma_pagamento = "CRÉDITO"
-            valor_conta = valor_consumo_ponta + \
-                valor_consumo_intermediário + valor_consumo_fora_ponta # type: ignore
-            valor_conta = valor_conta + valor_conta*CREDITO
+    elif FORMA_PAGAMENTO == "D":
+        FORMA_PAGAMENTO = "DÉBITO"
+        VALOR_CONSUMO_30K = 0
+        VALOR_CONSUMO_31_100K = 0
+        VALOR_CONSUMO_101_220K = 0
+        VALOR_CONSUMO_ACIMA_220K = 0
+        if TIPO_TARIFA == "TBR":
+            VALOR_CONTA = VALOR_CONSUMO_30K + VALOR_CONSUMO_31_100K + \
+                VALOR_CONSUMO_101_220K + VALOR_CONSUMO_ACIMA_220K
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*DEBITO
+        elif TIPO_TARIFA == "TRNC":
+            FORMA_PAGAMENTO = "DÉBITO"
+            VALOR_CONTA = valor_consumo + valor_consumo*DEBITO
+        elif TIPO_TARIFA == "TRNB":
+            FORMA_PAGAMENTO = "DÉBITO"
+            VALOR_CONSUMO_FORA_PONTA = VALOR_CONSUMO_INTERMEDIARIO
+            VALOR_CONTA = VALOR_CONSUMO_PONTA + \
+                VALOR_CONSUMO_INTERMEDIARIO + VALOR_CONSUMO_FORA_PONTA  # type: ignore
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*DEBITO
+    elif FORMA_PAGAMENTO == "C":
+        FORMA_PAGAMENTO = "CRÉDITO"
+        if TIPO_TARIFA == "TBR":
+            VALOR_CONTA = VALOR_CONSUMO_30K + VALOR_CONSUMO_31_100K + \
+                VALOR_CONSUMO_101_220K + VALOR_CONSUMO_ACIMA_220K  # type: ignore
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*CREDITO
+        elif TIPO_TARIFA == "TRNC":
+            FORMA_PAGAMENTO = "CRÉDITO"
+            VALOR_CONTA = valor_consumo + valor_consumo*CREDITO
+        elif TIPO_TARIFA == "TRNB":
+            FORMA_PAGAMENTO = "CRÉDITO"
+            VALOR_CONTA = VALOR_CONSUMO_PONTA + \
+                VALOR_CONSUMO_INTERMEDIARIO + VALOR_CONSUMO_FORA_PONTA  # type: ignore
+            VALOR_CONTA = VALOR_CONTA + VALOR_CONTA*CREDITO
 
     # Impressão da conta
-    if tipo_tarifa == "TBR":
-        tipo_tarifa = "Tarifa Residencial Baixa Renda Convencional"
+    if TIPO_TARIFA == "TBR":
+        TIPO_TARIFA = "Tarifa Residencial Baixa Renda Convencional"
         print(
-            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {tipo_tarifa} ")
+            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {TIPO_TARIFA} ")
         print(
-            f"O valor da conta é : R$ {valor_conta:.2f} com pagamento no {forma_pagamento}   ")
+            f"O valor da conta é : R$ {VALOR_CONTA:.2f} com pagamento no {FORMA_PAGAMENTO}   ")
 
-    elif tipo_tarifa == "TRNC":
-        tipo_tarifa = "Tarifa Residencial Normal Convencional"
+    elif TIPO_TARIFA == "TRNC":
+        TIPO_TARIFA = "Tarifa Residencial Normal Convencional"
         print(
-            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {tipo_tarifa} ")
+            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {TIPO_TARIFA} ")
         print(
-            f"O valor da conta é : R$ {valor_conta:.2f} com pagamento no {forma_pagamento}   ")
+            f"O valor da conta é : R$ {VALOR_CONTA:.2f} com pagamento no {FORMA_PAGAMENTO}   ")
 
-    elif tipo_tarifa == "TRNB":
-        tipo_tarifa = "Tarifa Residencial Normal Branca"
+    elif TIPO_TARIFA == "TRNB":
+        TIPO_TARIFA = "Tarifa Residencial Normal Branca"
         print(
-            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {tipo_tarifa} ")
+            f"Impressão da conta do Consumidor {nome_cliente} com tarifa tipo {TIPO_TARIFA} ")
         print(
-            f"O valor da conta é : R$ {valor_conta:.2f} com pagamento no {forma_pagamento} ")
+            f"O valor da conta é : R$ {VALOR_CONTA:.2f} com pagamento no {FORMA_PAGAMENTO} ")
 
         # Menu para verificar se o usuário deseja entrar com nova consulta o sair
     teste = input(

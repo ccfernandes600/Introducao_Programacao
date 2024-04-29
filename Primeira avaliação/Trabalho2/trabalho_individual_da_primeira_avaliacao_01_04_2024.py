@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 #
 # Autor: Claudio Fernandes
 # Data: 12/04/2024

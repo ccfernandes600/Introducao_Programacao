@@ -1,5 +1,7 @@
 
-#
+""" Progrma para calcular o valor da conta de energia elétrica da Equatorial-MA da primeira 
+avaliação da disciplina de Programação do curso de Engenharia Elétrica da UFMA
+"""
 # Autor: Claudio Fernandes
 # Data: 12/04/2024
 
@@ -11,7 +13,7 @@ DEBITO = 0.02  # TAXA DE 2%
 CREDITO = 0.05  # TAXA DE 5%
 
 # Tarifa Residencial Baixa Renda
-TARIFA30k = 0.23033  # Tarifa (R$/kWh)
+TARIFA_30k = 0.23033  # Tarifa (R$/kWh)
 TARIFA31_100k = 0.39485  # Tarifa (R$/kWh)
 TARIFA101_220k = 0.59227  # Tarifa (R$/kWh)
 TARIFA_ACIMA_220k= 0.65808  # Tarifa (R$/kWh)
@@ -69,7 +71,7 @@ while True:
         
 
         # Calculo do consumo Baixa Renda C
-        valor_consumo30K = consumo30K * TARIFA30k
+        valor_consumo30K = consumo30K * TARIFA_30k
         valor_consumo31_100K = consumo31_100K * TARIFA31_100k
         valor_consumo101_220K = consumo101_220K * TARIFA101_220k
         valor_consumo_acima_220K = consumo_acima_220K * TARIFA_ACIMA_220k
